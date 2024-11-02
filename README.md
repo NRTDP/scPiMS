@@ -3,6 +3,9 @@ Tools for the processing and analysis of Single cell Proteoform Imaging Mass Spe
 
 __scAnalyzer.m__
 
+scAnalyzer. contains MATLAB code for:
+ - optical single cell feature correlation
+ - scPiMS single cell feature extraction for downstream I2MS processing
 
 __GSVA_clusters_PCA/ss_GSVA.qmd__
 
