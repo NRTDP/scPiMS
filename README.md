@@ -1,6 +1,9 @@
 # scPiMS
 Tools for the processing and analysis of Single cell Proteoform Imaging Mass Spectrometry (scPiMS)
 
+__scAnalyzer.m__
+
+
 __GSVA_clusters_PCA/ss_GSVA.qmd__
 
 ss_GSVA.qmd contains R code for doing:
