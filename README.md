@@ -14,3 +14,5 @@ ss_GSVA.qmd contains R code for doing:
  - cluster analysis
  - Heatmap
  - PCA plots
+ - tSNE plot
+ - UMAP plot
