@@ -273,11 +273,11 @@ colors = rainbow(length(unique(train$Clusters)))
 names(colors) = unique(train$Clusters)
 
 ## Executing the algorithm on curated data
-tsne <- Rtsne(train[,-1], dims = 2, perplexity=30, 
+tsne <- Rtsne(train[,6:ncol(train)], dims = 2, perplexity=45, 
               check_duplicates = F,
               verbose=TRUE, max_iter = 500)
 
-exeTimeTsne<- system.time(Rtsne(train[,-1], dims = 2, perplexity=45,
+exeTimeTsne<- system.time(Rtsne(train[,6:ncol(train)], dims = 2, perplexity=45,
                                 check_duplicates = F,
                                 verbose=TRUE, max_iter = 500))
 ```
@@ -290,6 +290,9 @@ colors=c("#E69F00", "#56B4E9","yellowgreen")
 
 ggplot(tsne_df, aes(x = tSNE_1, y = tSNE_2, colour = train$Clusters)) +
   geom_point()+
+  labs(x = "tSNE_1",
+       y = "tSNE_2",
+      subtitle = "tSNE plot")+
   scale_color_manual(values = c("#E69F00", "#56B4E9","yellowgreen"))+
   theme_bw()
 ```
@@ -301,11 +304,11 @@ ggplot(tsne_df, aes(x = tSNE_1, y = tSNE_2, colour = train$Clusters)) +
 library(umap)
 theme_set(theme_bw(18))
 
-umap_df <- gsva.es3[,7:ncol(gsva.es3)]
-umap_meta <- gsva.es3[,1:6]
+umap_df <- gsva.es3[,6:ncol(gsva.es3)]
+umap_meta <- gsva.es3[,1:5]
 umap_meta$Cell<- rownames(umap_meta)
 
-
+set.seed(142)
 umap_fit <- umap_df |> umap()
 
 ```
