@@ -1,5 +1,5 @@
 # scPiMS
-Tools for the processing and analysis of Single cell Proteoform Imaging Mass Spectrometry (scPiMS)
+Tools for the processing and analysis of single cell Proteoform imaging Mass Spectrometry (scPiMS)
 
 __scAnalyzer.m__
 
