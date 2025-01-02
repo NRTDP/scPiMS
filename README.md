@@ -22,8 +22,9 @@ Tools for the processing and analysis of single cell Proteoform imaging Mass Spe
 Because the scApp.exe is a Windows Presentation Foundation (WPF) application that requires Windows 10 or later to run,
 all validation and processing were performed on Windows 10 22H2.
 
-### .NET Environment
+### .NET Environment and scApp.exe
  - No additional installation (.NET Runtime 6.0 packaged directly into application)
+ - The scApp.exe application is included in supplementary files in our publication located here: `IN SUBMISSION`
 
 ### MATLAB
  - MATLAB 2019b or later
@@ -37,25 +38,15 @@ all validation and processing were performed on Windows 10 22H2.
 	- https://posit.co/download/rstudio-desktop/ 
  - Installs in less than 10 minutes on standard workstation
 
- ### scApp.exe
- - The scApp.exe application is included in supplementary files in our publication located here: `IN SUBMISSION`
-
-
-scApp.exe ... select FDR threshold
-output: XLSX (export button)
-input to MATLAB and R: 1 csv files (from score matrix)
-
-# Running Demo Dataset `FIX`
-1. Download the demo dataset from the following link: 
-1. Unzip the demo dataset to a location of your choice
-1. Open the scApp.exe application
-1. Click the `Load` button and navigate to the unzipped demo dataset folder
-1. Click the `Run` button to process the demo dataset
-1. The processed data will be saved in the same folder as the demo dataset
-1. Open the scAnalyzer.m MATLAB script
+# Running Demo Dataset
+1. Download the demo files (Total_5272_cells.dmt and 165_proteoforms.fastp) from MassIVE dataset [MSV000096472](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=1414496353314110b391a9356119ad5d)
+1. Open the scApp.exe application and select the 2 input demo files
+1. Click the `Run` button to process the demo dataset (should take approximately 5 minutes on a standard desktop)
+1. Click the `Export` button to save the processed data as an XLSX file
+1. Use Excel to convert the "scores" sheet in the XLSX file to a CSV file
+1. Open the GSVA_clusters_PCA/ss_GSVA.qmd R Markdown file using RStudio
 1. Load the processed data and run the script
-1. Open the GSVA_clusters_PCA/ss_GSVA.qmd R Markdown file
-1. Load the processed data and run the script
-1. The results will be saved in the same folder as the demo dataset
-1. Review the results and enjoy!
-1. For more information, please refer to the user manual
+1. The resulting figures will be saved in the same directory as the R Markdown file
+
+# Running other datasets
+You can use the scApp.exe application to process other datasets by following the same steps as the demo dataset. The inputs are a .dmt file (containing single cell ion data) and a .fastp (containing the proteoform data).
