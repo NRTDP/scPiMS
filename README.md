@@ -34,7 +34,7 @@ all validation and processing were performed on Windows 10 22H2.
  - Installs in less than 10 minutes on standard workstation
 
  ### R Environment
- - R (v3.6.0+) and RStudio (2024.12.0+)
+ - R (v3.6.0+) and RStudio (2024.12.0+, Quarto v1.3.450)
 	- https://posit.co/download/rstudio-desktop/ 
  - Installs in less than 10 minutes on standard workstation
 
