@@ -39,6 +39,8 @@ all validation and processing were performed on Windows 10 22H2.
  - Installs in less than 10 minutes on standard workstation
 
 # Running Demo Dataset
+![Overview of the running the demo dataset](demo.png "Demo dataset overview")
+
 1. Download the demo files (Total_5272_cells.dmt and 165_proteoforms.fastp) from MassIVE dataset [MSV000096472](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=1414496353314110b391a9356119ad5d)
 1. Open the scApp.exe application and select the 2 input demo files
 1. Click the `Run` button to process the demo dataset (should take approximately 5 minutes on a standard desktop)
