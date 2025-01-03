@@ -1,5 +1,4 @@
 ---
-install_github("mkarikom/RSoptSC")---
 title: "Assigning pathway adjusted PASscore"
 subtitle: "single sample GSEA based on GSVA algorithm"
 date-format: "iso"
