@@ -43,9 +43,9 @@ passcore <- read_excel(paste0(data_dir,"pca_input.xlsx"), sheet = "ScoreFDR",col
 
 rownames(passcore) <- passcore$CellNumber
 
-pfr_anno <- read_excel(paste0(data_dir,"pfr_annotation1.xlsx"))|>as.data.frame()
+pfr_anno <- read_excel(paste0(data_dir,"pfr_annotation.xlsx"))|>as.data.frame()
 
-cell_anno <- read_excel(paste0(data_dir,"cell_annotation1.xlsx"))|>as.data.frame()|>
+cell_anno <- read_excel(paste0(data_dir,"cell_annotation.xlsx"))|>as.data.frame()|>
   mutate(CellNumber = paste0("Cell",CellNumber))
 
 cell_anno1 <- passcore|> dplyr::select(1:3)
