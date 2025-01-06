@@ -46,7 +46,7 @@ all validation and processing were performed on Windows 10 22H2.
 1. Click the `Run Single Cell` button to process the demo dataset (should take approximately 30 minutes on a standard desktop)
 1. Click the `Export score Matrix` button to save the processed data as an XLSX file
 1. Use Excel to convert the "scores" worksheet in the XLSX file to a CSV file
-1. Open the GSVA_clusters_PCA/ss_GSVA.qmd R Markdown file using RStudio
+1. Open the ss_GSVA.qmd R Markdown file using RStudio
 1. Load the processed data and run the script
 1. The resulting figures will be saved in the same directory as the R Markdown file
 
