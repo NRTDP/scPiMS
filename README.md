@@ -42,10 +42,9 @@ all validation and processing were performed on Windows 10 22H2.
 ![Overview of the running the demo dataset](img/demo.png "Demo dataset overview")
 
 1. Download the 4 required demo files (Total_5272_cells.dmt, 165_proteoforms.fastp, pfr_annotation.xlsx, cell_annotation.xlsx) from MassIVE dataset [MSV000096472](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=1414496353314110b391a9356119ad5d)
-1. Open the SingleCellApp.exe application and select the 2 input demo files (using the `Select Envelope File` button to pick the .fastp and the `Select Single Cell File` button to pick the .dmt)
+1. Open the SingleCellApp.exe application and select 2 input demo files (using the `Select Envelope File` button to pick the .fastp and the `Select Single Cell File` button to pick the .dmt). Use the parameters shown in the screenshot of the SingleCellApp.exe in "MassIVE and GitHub Roadmap.docx" in Supplementary Data 5 (FDR: 0.10; Decoys/forward: 10; StoriGroupId: 1).
 1. Click the `Run Single Cell` button to process the demo dataset (should take approximately 30 minutes on a standard desktop)
-1. Click the `Export score Matrix` button to save the processed data as an XLSX file in the directory with the other demo files (use the standard name pca_input.xlsx)
-1. Use Excel to convert the "scores" worksheet in the XLSX file to a CSV file
+1. Click the `Export score Matrix` button to save the processed data as an XLSX file in the directory with the other demo files (use the standard name pca_input.xlsx as this is referenced in the QMD script)
 1. Open the ss_GSVA.qmd R Markdown file using RStudio
 1. Install the prerequisite R packages by clicking `Install` in RStudio
 ![Installing R script prerequisites](img/install-prereqs.png "Install Prerequities")
