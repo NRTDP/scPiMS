@@ -26,7 +26,7 @@ all validation and processing were performed on Windows 10 22H2.
  - No additional installation (.NET Runtime 8.0 packaged directly into application)
  - The SingleCellApp.exe application is included in supplementary files in our publication located here: `IN SUBMISSION`
 
-### MATLAB
+### MATLAB (only needed to experiment with scAnalyzer.m, not required for Demo)
  - MATLAB 2023b or later
  - Image Processing Toolbox
  - Statistics and Machine Learning Toolbox
