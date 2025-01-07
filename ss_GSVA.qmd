@@ -95,15 +95,13 @@ data_long <- passcore|>
   pivot_longer(cols = 4:ncol(passcore),
                names_to = "PFR", 
                values_to ="PASscore")|>
-  mutate(PFR = str_extract(PFR, "^[^.]+"),
-         PFR = str_extract(PFR, '(?<=tv\\|).*'))|>
-  group_by(PFR, CellNumber)|>
-  mutate(PASscore1 = pas_merge(PASscore))|>
-  arrange(desc(PASscore1))|>
-  distinct(c(PFR),.keep_all = T)|>ungroup()
+  mutate(PFR = str_extract(PFR, "^[^.]+"))
 
 data_long1 <- plyr::join_all(list(data_long, pfr_anno), by="PFR")|>
-  arrange(PASscore1)|>distinct(CellNumber,EntrezID, .keep_all = T)
+  group_by(EntrezID, CellNumber)|>
+  mutate(PASscore1 = pas_merge(PASscore))|>
+  arrange(desc(PASscore1))|>
+  distinct(EntrezID,.keep_all = T)|>ungroup()
 
 data<- data_long1|>
   pivot_wider(id_cols = 1:3, values_from = PASscore1, names_from = EntrezID)|>
