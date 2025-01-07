@@ -30,6 +30,8 @@ if(length(.packages[!.inst]) > 0) {
 # load packages if not loaded yet
 lapply(.packages, require, character.only=T)
 .packages[which(lapply(.packages, require, character.only=TRUE) %in% FALSE)]
+
+current_date <- Sys.Date()
 ```
 
 ## Loading scPiMS data
@@ -48,7 +50,8 @@ pfr_anno <- read_excel(paste0(data_dir,"pfr_annotation.xlsx"))|>as.data.frame()
 cell_anno <- read_excel(paste0(data_dir,"cell_annotation.xlsx"))|>as.data.frame()|>
   mutate(CellNumber = paste0("Cell",CellNumber))
 
-cell_anno1 <- passcore|> dplyr::select(1:3)
+# Create a folder called Output where the results will be saved
+if(dir.exists(paste0(data_dir,"output")) == F){dir.create(paste0(data_dir,"output"))}
 
 ```
 
@@ -108,7 +111,7 @@ data<- data_long1|>
   pivot_wider(id_cols = 1:3, values_from = PASscore1, names_from = EntrezID)|>
   as.data.frame()
 rownames(data)<-data$CellNumber
-#write.csv(data, paste0(data_dir,"passcore_m_v1.csv"),row.names = F)
+
 ```
 
 ## Data Cleaning
@@ -165,7 +168,9 @@ ssgseaPar <- ssgseaParam(scores_data2, canonicalC2BroadSets, minSize = 2)
 gsva.es <- gsva(gsvaPar,verbose=FALSE)
 dim(gsva.es)
 gsva.es<-as.data.frame(gsva.es)
-#write.csv(gsva.es,"Output/gsva_es-2024-06-25.csv", row.names = T)
+paste0(data_dir,"output")
+
+write.csv(gsva.es,paste0(data_dir,"output/gsva_es_",current_date,".csv"), row.names = T)
 ```
 
 ### Filtering the most abundant
@@ -174,7 +179,8 @@ gsva.es<-as.data.frame(gsva.es)
 library(M3C)
 filtered_results <- featurefilter(gsva.es, percentile=10, method='A', topN=25)  #method='MAD'
 gsva.es1<-filtered_results$filtered_data
-#write.csv(gsva.es1,"Output/gsva_es-2024-06-25_filtered_10percentile.csv", row.names = T)
+
+write.csv(gsva.es1,paste0(data_dir,"output/gsva_es_",current_date,"_filtered_10percentile.csv"), row.names = T)
 ```
 
 ### z-score by Biolog.Pathway
@@ -184,7 +190,6 @@ gsva.es2 <- apply(gsva.es1,1,function(x){scale(x)})
 rownames(gsva.es2) <- colnames(gsva.es) 
 
 gsva.es2 <- as.data.frame(t(gsva.es2))
-#boxplot(gsva.es2[1:50,1:100])
 ```
 
 ## Making 'Pathways_df.csv' File Results
@@ -228,7 +233,8 @@ Pathways_df$Gene_Symbol <- apply(Pathways_df[,3], 1, function(x)to_json(x))
 Pathways_df$Accession <- apply(Pathways_df[,4], 1, function(x)to_json(x))
 Pathways_df <- Pathways_df[,-c(2:4)]
 
-#write.csv(Pathways_df,"Pathways_df.csv")
+write.csv(Pathways_df,paste0(data_dir,"output/Pathways_df_",current_date,".csv"), row.names = T)
+
 ```
 
 # clusters
@@ -265,8 +271,7 @@ gsva.es3<- plyr::join_all(list(df_clust,cell_type_df,gsva.es2a), by="CellNumber"
 gsva.es3<-gsva.es3|>column_to_rownames("CellNumber")
 gsva.es3$cluster<- as.factor(gsva.es3$cluster)
 
-#write.csv(cell_type_df,"df_clust.csv")
-
+write.csv(cell_type_df,paste0(data_dir,"output/df_clust_",current_date,".csv"), row.names = F)
 ```
 
 ## Heatmap
