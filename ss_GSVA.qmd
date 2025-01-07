@@ -95,7 +95,8 @@ data_long <- passcore|>
   pivot_longer(cols = 4:ncol(passcore),
                names_to = "PFR", 
                values_to ="PASscore")|>
-  mutate(PFR = str_extract(PFR, "^[^.]+"))
+  mutate(PFR = str_extract(PFR, "^[^.]+"),
+         PFR = str_extract(PFR, '(?<=tv\\|).*'))
 
 data_long1 <- plyr::join_all(list(data_long, pfr_anno), by="PFR")|>
   group_by(EntrezID, CellNumber)|>
