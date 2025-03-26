@@ -1,6 +1,8 @@
 # scPiMS
 Tools for the processing and analysis of single cell Proteoform imaging Mass Spectrometry (scPiMS)
 
+[![DOI](https://zenodo.org/badge/881410059.svg)](https://doi.org/10.5281/zenodo.15090688)
+
 ### SingleCellApp.exe (.NET WPF application)
  - scores proteoforms against single cell ions
 
